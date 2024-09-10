@@ -1,0 +1,8 @@
+s1 = "abc"  
+s2 = "xya"  
+sorted_s1 = ''.join(sorted(s1))
+sorted_s2 = ''.join(sorted(s2))
+can_break_s1_to_s2 = all(sorted_s1[i] >= sorted_s2[i] for i in range(len(s1)))
+can_break_s2_to_s1 = all(sorted_s2[i] >= sorted_s1[i] for i in range(len(s2)))
+result = can_break_s1_to_s2 or can_break_s2_to_s1
+print(result)  
