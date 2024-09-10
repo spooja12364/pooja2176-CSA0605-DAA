@@ -1,0 +1,29 @@
+from collections import defaultdict
+s = "dcab" 
+pairs = [[0, 3], [1, 2]] 
+n = len(s)
+parent = list(range(n))
+for a, b in pairs:
+    rootA, rootB = a, b
+    while parent[rootA] != rootA:
+        rootA = parent[rootA]
+    while parent[rootB] != rootB:
+        rootB = parent[rootB]
+    if rootA != rootB:
+        parent[rootB] = rootA
+groups = defaultdict(list)
+for i in range(n):
+    root = i
+    while parent[root] != root:
+        root = parent[root]
+    groups[root].append(s[i])
+for key in groups:
+    groups[key].sort(reverse=True)
+result = []
+for i in range(n):
+    root = i
+    while parent[root] != root:
+        root = parent[root]
+    result.append(groups[root].pop())
+
+print(''.join(result)) 
