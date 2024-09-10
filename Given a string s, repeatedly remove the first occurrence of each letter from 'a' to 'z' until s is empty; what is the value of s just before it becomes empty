@@ -1,0 +1,13 @@
+s = "aabcbbca" 
+while True:
+    removed = set()
+    new_s = []
+    for char in s:
+        if char not in removed:
+            removed.add(char)
+        else:
+            new_s.append(char)
+    if not removed:
+        break
+    s = ''.join(new_s)
+print(s) 
