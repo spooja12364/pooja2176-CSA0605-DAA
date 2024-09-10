@@ -1,0 +1,14 @@
+def max_sum(nums, queries):
+    def max_non_adjacent_sum(arr):
+        incl, excl = 0, 0
+        for num in arr:
+            new_excl = max(incl, excl)
+            incl = excl + num
+            excl = new_excl
+        return max(incl, excl)
+result = 0
+    mod = 10**9 + 7
+    for pos, x in queries:
+        nums[pos] = x
+        result = (result + max_non_adjacent_sum(nums)) % mod
+    return result
