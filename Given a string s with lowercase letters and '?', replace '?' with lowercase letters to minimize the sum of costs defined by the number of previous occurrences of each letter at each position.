@@ -1,0 +1,16 @@
+s = "a?b?c?"  
+n = len(s)
+last_seen = {}
+value = 0
+result = []
+for i in range(n):
+    if s[i] == '?':
+        chosen_letter = 'a'
+    else:
+        chosen_letter = s[i]
+    if chosen_letter in last_seen:
+        value += last_seen[chosen_letter]
+    last_seen[chosen_letter] = last_seen.get(chosen_letter, 0) + 1
+    result.append(chosen_letter)
+print(''.join(result))  
+print(value) 
