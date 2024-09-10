@@ -1,0 +1,5 @@
+arr = [1, 2, 3, 4, 3, 5, 3, 6]
+element_to_remove = 3
+arr = [x for x in arr if x != element_to_remove]
+print(arr)
+0 comments on commit c5f
