@@ -1,0 +1,22 @@
+cost(0) = 0
+cost(1) = 1
+cost(2) = 0
+Hence, the value of "aab" is 0 + 1 + 0 = 1. Your task is to replace all occurrences of '?' in s with any lowercase English letter so at the value of s is minimized.
+from collections import Counter
+def minimize_string_value(s):
+    def cost(i, char_count):
+        return sum(count for char, count in char_count.items() if char == s[i])
+min_value = float('inf')
+    for c in range(26):
+        char_count = Counter()
+        value = 0
+        for i in range(len(s)):
+            if s[i] == '?':
+                value += cost(i, char_count)
+            else:
+                char_count[s[i]] += 1
+        min_value = min(min_value, value)
+return min_value
+s = "a?b?c"
+result = minimize_string_value(s)
+print(result)
