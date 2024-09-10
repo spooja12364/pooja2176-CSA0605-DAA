@@ -1,0 +1,4 @@
+def sort_array_by_parity(nums):
+    odd = [x for x in nums if x % 2]
+    even = [x for x in nums if x % 2 == 0]
+    return [even.pop(0) if i % 2 == 0 else odd.pop(0) for i in range(len(nums))]
