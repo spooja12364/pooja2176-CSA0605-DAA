@@ -1,0 +1,20 @@
+nums = [3, 2, 5, 10, 7]  
+queries = [[1, 10], [2, 1]]  
+MOD = 10**9 + 7
+total_sum = 0
+n = len(nums)
+dp = [0] * n
+for posi, xi in queries:
+    nums[posi] = xi
+    if n == 0:
+        max_sum = 0
+    elif n == 1:
+        max_sum = max(nums[0], 0)
+    else:
+        dp[0] = max(nums[0], 0)
+        dp[1] = max(nums[0], nums[1])
+        for i in range(2, n):
+            dp[i] = max(dp[i-1], dp[i-2] + nums[i])
+        max_sum = dp[-1]
+        total_sum = (total_sum + max_sum) % MOD
+print(total_sum) 
