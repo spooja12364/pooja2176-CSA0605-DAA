@@ -1,0 +1,5 @@
+def copy_string(source):
+    return source[0] + copy_string(source[1:]) if source else ''
+original = "Hello, World!"
+copied = copy_string(original)
+print(copied) 
