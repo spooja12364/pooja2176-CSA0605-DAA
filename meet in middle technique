@@ -1,0 +1,20 @@
+from itertools import combinations
+def meet_in_the_middle(arr, target_sum):
+    mid = len(arr) // 2
+    left_half = arr[:mid]
+    right_half = arr[mid:]
+    def generate_sums(arr):
+        sums = set()
+        for i in range(len(arr) + 1):
+            for combo in combinations(arr, i):
+                sums.add(sum(combo))
+        return sums
+    left_sums = generate_sums(left_half)
+    right_sums = generate_sums(right_half)
+    for s in left_sums:
+        if (target_sum - s) in right_sums:
+            return True
+    return False
+arr = [3, 34, 4, 12, 5, 2]
+target_sum = 9
+print(meet_in_the_middle(arr, target_sum))  # Output: True (3 + 4 + 2 = 9)
