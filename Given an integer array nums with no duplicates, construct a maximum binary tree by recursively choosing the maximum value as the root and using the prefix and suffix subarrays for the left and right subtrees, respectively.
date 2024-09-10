@@ -1,0 +1,15 @@
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+nums = [3,2,1,6,0,5] 
+stack = []
+for num in nums:
+    node = TreeNode(num)
+    while stack and stack[-1].val < num:
+       node.left = stack.pop()
+    if stack:
+        stack[-1].right = node
+    stack.append(node)
+root = stack[0]
