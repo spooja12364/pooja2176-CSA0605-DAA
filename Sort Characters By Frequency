@@ -1,0 +1,6 @@
+from collections import Counter
+s = "tree"
+freq = Counter(s)
+sorted_chars = sorted(freq, key=lambda x: (-freq[x], x))
+result = ''.join(char * freq[char] for char in sorted_chars)
+print(result)  
