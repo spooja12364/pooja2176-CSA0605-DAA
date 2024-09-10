@@ -1,0 +1,5 @@
+numbers = [10, 20, 4, 45, 99, 8]
+max_value = max(numbers)
+min_value = min(numbers)
+print(f"The maximum value is: {max_value}")
+print(f"The minimum value is: {min_value}")
