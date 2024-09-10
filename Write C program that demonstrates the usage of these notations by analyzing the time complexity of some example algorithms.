@@ -1,0 +1,8 @@
+def example_algorithm(n):
+    print("This is a constant time complexity algorithm")
+for i in range(n):
+        print("This is a linear time complexity algorithm")
+for i in range(n):
+        for j in range(n):
+            print("This is a quadratic time complexity algorithm")
+example_algorithm(5)
