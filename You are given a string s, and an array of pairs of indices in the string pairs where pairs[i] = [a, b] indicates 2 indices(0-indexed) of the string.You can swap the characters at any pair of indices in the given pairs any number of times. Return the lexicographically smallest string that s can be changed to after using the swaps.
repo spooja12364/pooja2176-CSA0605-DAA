@@ -1,0 +1,20 @@
+def smallestStringWithSwaps(s, pairs):
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+def union(x, y):
+        root_x, root_y = find(x), find(y)
+        if root_x != root_y:
+            parent[root_x] = root_y
+parent = {i: i for i in range(len(s))}
+    for a, b in pairs:
+        union(a, b)
+groups = collections.defaultdict(list)
+    for i in range(len(s)):
+        groups[find(i)].append(s[i])
+for group in groups.values():
+        group.sort(reverse=True)res = []
+    for i in range(len(s)):
+        res.append(groups[find(i)].pop())
+return ''.join(res)
