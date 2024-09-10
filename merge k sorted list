@@ -1,0 +1,28 @@
+import heapq
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+def __lt__(self, other):
+        return self.val < other.val
+lists = [
+    ListNode(1, ListNode(4, ListNode(5))),
+    ListNode(1, ListNode(3, ListNode(4))),
+    ListNode(2, ListNode(6))
+]
+heap = []
+for l in lists:
+    if l:
+        heapq.heappush(heap, l)
+dummy = ListNode()
+current = dummy
+while heap:
+    node = heapq.heappop(heap)
+    current.next = node
+    current = current.next
+    if node.next:
+        heapq.heappush(heap, node.next)
+merged_head = dummy.next
+while merged_head:
+    print(merged_head.val, end=" -> ")
+    merged_head = merged_head.next
