@@ -1,0 +1,20 @@
+def maxDifference(num: int) -> int:
+    num_str = str(num)
+    def replace_digits(num_str, x, y):
+        if x == y:
+            return num_str
+        return num_str.replace(x, y).lstrip('0') or '0'
+    max_diff = 0
+    for x in set(num_str):  
+        for y in '0123456789':
+            if x == y:
+                continue
+            a = int(replace_digits(num_str, x, y))
+            for y2 in '0123456789':
+                if x == y2:
+                    continue
+                b = int(replace_digits(num_str, x, y2))
+                max_diff = max(max_diff, abs(a - b))
+    return max_diff
+num = 9
+print(maxDifference(num))  # Output: 8
